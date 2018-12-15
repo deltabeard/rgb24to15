@@ -1,5 +1,6 @@
 #include <math.h>
 
+#include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -32,21 +33,32 @@ int main(int argc, char** argv)
 		uint16_t colour_15;
 	} output;
 
-	if(argc != 2)
+	if(argc < 2)
 	{
 		printf("Converts 24-bit RGB to 15-bit RGB colour values.\n"
-			"Usage: %s hex\n",
+			"Usage: %s HEX...\n",
 			argv[0]);
 		exit(EXIT_FAILURE);
 	}
 
-	input.colour_24 = strtol(argv[1], NULL, 16);
+	for(int i = 1; i < argc; i++)
+	{
+		if(strlen(argv[i]) != strlen("0xFFFFFF"))
+		{
+			printf("0xXXXX ");
+			continue;
+		}
 
-	output.colour_15 = 0;
-	output.b = (double)input.b * MULTIPLICATION_RATIO;
-	output.g = (double)input.g * MULTIPLICATION_RATIO;
-	output.r = (double)input.r * MULTIPLICATION_RATIO;
+		input.colour_24 = strtol(argv[i], NULL, 16);
 
-	printf("0x%04X\n", output.colour_15);
+		output.colour_15 = 0;
+		output.b = (double)input.b * MULTIPLICATION_RATIO;
+		output.g = (double)input.g * MULTIPLICATION_RATIO;
+		output.r = (double)input.r * MULTIPLICATION_RATIO;
+
+		printf("0x%04X ", output.colour_15);
+	}
+
+	printf("\n");
 	return 0;
 }
