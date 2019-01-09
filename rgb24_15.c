@@ -51,7 +51,7 @@ int main(int argc, char** argv)
 			continue;
 		}
 
-		printf("0x%04X ", convert(strtol(argv[i], NULL, 16)));
+		printf("0x%04X ", rgb24_to_15(strtol(argv[i], NULL, 16)));
 	}
 
 	putchar('\n');
