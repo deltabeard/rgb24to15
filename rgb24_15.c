@@ -25,8 +25,6 @@
  * For more information, please refer to <http://unlicense.org>
 */
 
-#include <math.h>
-
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -35,6 +33,7 @@
 
 int main(int argc, char** argv)
 {
+	int i;
 
 	if(argc < 2)
 	{
@@ -44,7 +43,7 @@ int main(int argc, char** argv)
 		exit(EXIT_FAILURE);
 	}
 
-	for(int i = 1; i < argc; i++)
+	for(i = 1; i < argc; i++)
 	{
 		if(strlen(argv[i]) != strlen("0xFFFFFF"))
 		{
@@ -55,6 +54,6 @@ int main(int argc, char** argv)
 		printf("0x%04X ", convert(strtol(argv[i], NULL, 16)));
 	}
 
-	printf("\n");
+	putchar('\n');
 	return EXIT_SUCCESS;
 }

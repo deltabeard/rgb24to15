@@ -1,4 +1,4 @@
-CFLAGS = -std=c99 -Ofast -s -Wall
+CFLAGS = -std=c89 -pedantic -Ofast -s -Wall
 LDLIBS = -lm
 
 all: rgb24_15
