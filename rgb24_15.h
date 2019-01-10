@@ -25,12 +25,13 @@
  * For more information, please refer to <http://unlicense.org>
 */
 
-#define RGB24_TO_15(x) (unsigned short)(((x & 0x0000F8) >> 3) | \
+#include <stdint.h>
+
+#define RGB888_TO_RGB555(x) (((x & 0x0000F8) >> 3) | \
 		((x & 0x00F800) >> 6) | \
 		((x & 0xF80000) >> 9))
 
-unsigned short rgb24_to_15(unsigned long int rgb24)
+inline uint16_t RGB888_TO_RGB555_FN(uint_least32_t rgb888)
 {
-	return RGB24_TO_15(rgb24); 
+	return RGB888_TO_RGB555(rgb888);
 }
-

@@ -1,4 +1,4 @@
-CFLAGS = -std=c89 -pedantic -Ofast -s -Wall -Wextra
+CFLAGS = -std=c99 -pedantic -Ofast -s -Wall -Wextra
 LDLIBS = -lm
 
 all: rgb24_15
